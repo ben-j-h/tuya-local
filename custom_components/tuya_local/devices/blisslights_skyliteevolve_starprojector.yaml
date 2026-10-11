@@ -1,0 +1,110 @@
+name: Star projector
+products:
+  - id: jteg9ktrhbxtiicz
+    manufacturer: BlissLights
+    model: Sky Lite Evolve
+    model_id: SKY-EVOLVE-B-RCW8
+entities:
+  - entity: switch
+    icon: "mdi:projector"
+    dps:
+      - id: 20
+        type: boolean
+        name: switch
+  - entity: light
+    translation_key: color_light
+    dps:
+      - id: 52
+        type: boolean
+        name: switch
+      - id: 51
+        name: color_mode
+        type: string
+        mapping:
+          - dps_val: colour
+            value: hs
+          - dps_val: scene
+            value: Scene
+      - id: 24
+        name: rgbhsv
+        type: hex
+        format:
+          - name: h
+            bytes: 2
+            range:
+              min: 0
+              max: 360
+          - name: s
+            bytes: 2
+            range:
+              min: 0
+              max: 1000
+          - name: v
+            bytes: 2
+            range:
+              min: 0
+              max: 1000
+  - entity: light
+    translation_key: laser
+    dps:
+      - id: 53
+        type: boolean
+        name: switch
+      - id: 54
+        name: brightness
+        type: integer
+        range:
+          min: 10
+          max: 1000
+  - entity: fan
+    name: Rotation
+    icon: "mdi:rotate-3d-variant"
+    dps:
+      - id: 60
+        type: boolean
+        name: switch
+      - id: 62
+        type: integer
+        name: speed
+        range:
+          min: 1
+          max: 100
+  - entity: time
+    translation_key: timer
+    category: config
+    dps:
+      - id: 26
+        type: integer
+        name: second
+        range:
+          min: 0
+          max: 86400
+  - entity: select
+    translation_key: scene
+    category: config
+    dps:
+      - id: 58
+        type: string
+        name: option
+        optional: true
+        mapping:
+          - dps_val: "AAA="
+            value: Cosmos
+          - dps_val: "AAE="
+            value: Sky
+          - dps_val: "AAI="
+            value: Space
+          - dps_val: "AAM="
+            value: Ocean
+  - entity: number
+    name: Brightness
+    category: config
+    hidden: true
+    dps:
+      - id: 101
+        type: integer
+        name: value
+        optional: true
+        range:
+          min: 0
+          max: 1000
